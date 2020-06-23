@@ -1,11 +1,13 @@
 package news_manager
 
 import (
+	"context"
 	"github.com/go-redis/redis"
 	"github.com/pelletier/go-toml"
 	om "github.com/the-gigi/delinkcious/pkg/object_model"
 )
 
+var ctx = context.Background()
 const redisMaxPageSize = 10
 
 // RedisNewsStore manages a UserEvents data structure
@@ -15,7 +17,7 @@ type RedisNewsStore struct {
 
 func (m *RedisNewsStore) GetNews(username string, startIndex int) (events []*om.LinkManagerEvent, nextIndex int, err error) {
 	stop := startIndex + redisMaxPageSize - 1
-	var ctx = context.Background()
+
 	result, err := m.redis.LRange(ctx, username, int64(startIndex), int64(stop)).Result()
 	if err != nil {
 		return
