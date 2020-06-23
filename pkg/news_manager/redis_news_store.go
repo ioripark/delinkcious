@@ -48,7 +48,7 @@ func (m *RedisNewsStore) AddEvent(username string, event *om.LinkManagerEvent) (
 		return
 	}
 
-	err = m.redis.RPush(username, t).Err()
+	err = m.redis.RPush(ctx, username, t).Err()
 	return
 }
 
