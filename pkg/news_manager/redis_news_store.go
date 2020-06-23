@@ -59,7 +59,7 @@ func NewRedisNewsStore(address string) (store Store, err error) {
 		DB:       0,  // use default DB
 	})
 
-	_, err = client.Ping().Result()
+	_, err = client.Ping(ctx).Result()
 	if err != nil {
 		return
 	}
