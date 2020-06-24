@@ -4,7 +4,7 @@ import (
 	"context"
 	"github.com/go-redis/redis"
 	"github.com/pelletier/go-toml"
-	om "github.com/the-gigi/delinkcious/pkg/object_model"
+	om "github.com/ioripark/delinkcious/pkg/object_model"
 )
 
 var ctx = context.Background()
